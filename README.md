@@ -16,3 +16,6 @@
 6. 注文機能 → 6_feature_orders
 7. 検索機能 → 7_feature_search
 8. ジャンル検索機能 → 8_genre_search
+
+1でwebpackerをインストールした．
+1でbootstrapとfontawesomeインストール済み
