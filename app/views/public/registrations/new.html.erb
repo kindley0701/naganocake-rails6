@@ -19,12 +19,12 @@
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <p>メールアドレス</p><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
   
   <div class="field">
-    <p>郵便番号</p>
+    <p>郵便番号(ハイフンなし)</p>
     <%= f.text_field :zip %>
   </div>
   
@@ -34,12 +34,12 @@
   </div>
   
   <div class="field">
-    <p>電話番号</p>
+    <p>電話番号(ハイフンなし)</p>
     <%= f.text_field :tel %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <p>パスワード(6文字以上)</p>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -47,7 +47,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <p>パスワード(確認用)</p><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
