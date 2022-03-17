@@ -1,6 +1,10 @@
 <%- if controller_name != 'sessions' %>
-  <p>既に登録済みの方</p>
-  <div class="kochira">
+  <div class="row">
+    <h5 class="bg-light col-3">既に登録済みの方</h5>
+  </div>
+
+  <div class="kochira row">
+    <div class="col-2"></div>
     <%= link_to "こちら", new_session_path(resource_name) %>
     <p>からログインしてください．</p>
   </div>
@@ -8,8 +12,13 @@
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <p>会員登録がお済みでない方</p>
-  <div class="kochira">
+  <div class="row">
+    <div class="col-1"></div>
+    <p class="bg-light col-5">会員登録がお済みでない方</p>
+  </div>
+
+  <div class="kochira row">
+    <div class="col-2"></div>
     <%= link_to "こちら", new_registration_path(resource_name) %>
     <p>から会員登録を行ってください．</p>
   </div>

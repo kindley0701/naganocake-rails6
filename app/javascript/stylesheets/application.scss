@@ -16,7 +16,15 @@ header {
 
 .field {
   display: flex;
-  height: 30px;
+  height: px;
+}
+
+.actions {
+  justify-content: center;
+}
+
+.pass {
+  display: flex;
 }
 
 .kochira {
