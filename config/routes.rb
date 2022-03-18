@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
-
+  
   #customers_controller(edit,updateはdeviseの上)
   get 'customers' => 'public/customers#show', as: 'customer'
   get 'customers/confirm' => 'public/customers#confirm', as: 'confirm_customer'
