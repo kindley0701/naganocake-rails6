@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   patch 'customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe_customer'
 
   resources :items, module: 'public', only: [:index, :show]
-  #public権限下でのresourcesの使い方．URLに/public/を含まない．
 
   resources :cart_items, module: 'public', only: [:index, :create, :destroy, :update]
   delete 'cart_items' => 'public/cart_items#destroy_all', as: 'all_cart_items'
