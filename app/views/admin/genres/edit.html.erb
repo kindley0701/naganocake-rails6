@@ -2,10 +2,7 @@
   <div class="row title">
     <h5 class="col-3 bg-light">ジャンル編集</h5>
   </div>
-<<<<<<< HEAD
   <%= render 'admin/shared/error_messages', resource: @genre %>
-=======
->>>>>>> d8285dd (made page[public(items#index), admin(genres#index, genres#edit, items#index, items#new, items#show)])
   <%= form_with model: @genre, url: admin_genre_path(@genre.id) do |f| %>
   <div class="genre-new row">
     <p class="col-2">ジャンル名</p>
