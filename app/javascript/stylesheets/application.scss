@@ -12,7 +12,7 @@ footer {
 
 
 .title {
-  margin: 10px;
+  margin: 10px 0;
 }
 
 .header-links {
@@ -29,8 +29,14 @@ footer {
   height: 40px;
 }
 
+.field2 {
+  display: flex;
+  height: 80px;
+}
+
 .actions {
   justify-content: center;
+  margin: 10px 0;
 }
 
 .pass {
@@ -49,4 +55,32 @@ footer {
 .text {
   text-align: center;
   margin: 50px;
+}
+
+.genre-new {
+  display: flex;
+}
+
+.radio-button {
+  display: flex;
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 200px;
+  height: 250px;
+}
+
+.image {
+  width: 150px;
+  height: 150px;
+}
+
+.genre {
+  text-align: center;
+  margin: 0 auto;
 }

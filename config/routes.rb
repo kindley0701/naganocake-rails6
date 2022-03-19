@@ -22,9 +22,13 @@ Rails.application.routes.draw do
   get 'customers/confirm' => 'public/customers#confirm', as: 'confirm_customer'
   patch 'customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe_customer'
 
+  resources :items, module: 'public', only: [:index]
+
   namespace :admin do
     root to: 'homes#top'
     resources :customers, only: [:index]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :items, only: [:index, :new, :create, :show]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
