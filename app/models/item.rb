@@ -3,6 +3,10 @@ class Item < ApplicationRecord
   has_one_attached :image
   belongs_to :genre
 
+  validates :name, presence: true, uniqueness: true
+  validates :caption, presence: true
+  validates :unit_price, presence: true
+
   def price
     (unit_price * 1.08).to_i
   end
