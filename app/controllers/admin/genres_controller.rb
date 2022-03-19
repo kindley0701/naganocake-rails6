@@ -20,11 +20,16 @@ class Admin::GenresController < ApplicationController
 
   def update
     @genre = Genre.find(params[:id])
+<<<<<<< HEAD
     if @genre.update(genre_params)
       redirect_to admin_genres_path
     else
       render :edit
     end
+=======
+    @genre.update(genre_params)
+    redirect_to admin_genres_path
+>>>>>>> d8285dd (made page[public(items#index), admin(genres#index, genres#edit, items#index, items#new, items#show)])
   end
 
   private
