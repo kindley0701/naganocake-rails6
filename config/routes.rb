@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   resources :addresses, module: 'public', only: [:index, :create, :edit, :update, :destroy]
 
-  resources :items, module: 'public', only: [:index]
+  resources :items, module: 'public', only: [:index, :show]
 
   namespace :admin do
     root to: 'homes#top'
