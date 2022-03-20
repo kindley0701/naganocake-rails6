@@ -2,6 +2,7 @@
   <div class="row title">
     <h5 class="col-3 bg-light">ジャンル一覧・追加</h5>
   </div>
+  <%= render 'admin/shared/error_messages', resource: @genre %>
   <%= form_with model: @genre, url: admin_genres_path do |f| %>
   <div class="genre-new row">
     <p class="col-2">ジャンル名</p>

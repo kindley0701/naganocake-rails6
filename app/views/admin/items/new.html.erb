@@ -2,6 +2,7 @@
   <div class="row title">
     <h5 class="col-3 bg-light">商品新規登録</h5>
   </div>
+  <%= render 'admin/shared/error_messages', resource: @item %>
   <div>
     <%= form_with model: @item, url: admin_items_path do |f| %>
       <div class="field row">
