@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
   }
@@ -24,12 +23,15 @@ Rails.application.routes.draw do
 
   resources :items, module: 'public', only: [:index]
   #public権限下でのresourcesの使い方．URLに/public/を含まない．
+  
+  resources :cart_items, module: 'public', only: [:index, :create, :destroy, :update]
+  delete 'cart_items' => 'public/cart_items#destroy_all', as: 'all_cart_items'
 
   namespace :admin do
     root to: 'homes#top'
     resources :customers, only: [:index]
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :items, only: [:index, :new, :create, :show]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
 
 

@@ -1,15 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
-      <div class="border border-dark ">
-        <p class="genre">ジャンル検索</p>
-      </div>
-      <div class="border border-dark border-top-0">
-        <% @genres.each do |genre| %>
-          <div class="genre"><%= genre.name %></div>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'genre_search', genres: @genres %>
     <div class="col-9 title">
       <div>
         <h5 class="bg-light">商品一覧</h5>
@@ -18,13 +9,15 @@
       <div class="items">
         <% @items.each do |item| %>
           <div class="item">
-            <div class="image">
-              <%= image_tag item.get_image(150,150) %>
-            </div>
-            <div class="field">
-              <p>商品名　　</p>
-              <div><%= item.name %></div>
-            </div>
+            <%= link_to item_path(item.id), class: 'text-dark' do %>
+              <div class="image">
+                <%= image_tag item.get_image(150,150) %>
+              </div>
+              <div class="field">
+                <p>商品名　　</p>
+                <div><%= item.name %></div>
+              </div>
+            <% end %>
             <div class="field">
               <p>￥</p>
               <div><%= item.price %></div>

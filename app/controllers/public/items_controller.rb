@@ -5,4 +5,11 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
   end
 
+  def show
+    @genres = Genre.all
+    @item = Item.find(params[:id])
+    @cart_item =CartItem.new
+    @customer = current_customer
+  end
+
 end

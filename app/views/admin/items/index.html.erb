@@ -16,6 +16,7 @@
         <th>税抜価格</th>
         <th>ジャンル</th>
         <th>ステータス</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -32,6 +33,7 @@
               <p class="text-muted">販売停止中</p>
             <% end %>
           </td>
+          <td><%= link_to "編集", edit_admin_item_path(item.id) %></td>
         </tr>
       <% end %>
     </tbody>

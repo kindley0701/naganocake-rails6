@@ -1,13 +1,9 @@
 <div class="container">
   <div class="row title">
-    <h5 class="col-3 bg-light">商品新規登録</h5>
+    <h5 class="col-3 bg-light">商品編集</h5>
   </div>
-<<<<<<< HEAD
-  <%= render 'admin/shared/error_messages', resource: @item %>
-=======
->>>>>>> d8285dd (made page[public(items#index), admin(genres#index, genres#edit, items#index, items#new, items#show)])
   <div>
-    <%= form_with model: @item, url: admin_items_path do |f| %>
+    <%= form_with model: @item, url: admin_item_path do |f| %>
       <div class="field row">
         <div class="col-3"></div>
         <p class="col-2">商品画像</p>
@@ -54,12 +50,10 @@
           <%= f.radio_button :is_active, :false %>
           <p>販売停止中</p>
         </div>
-
-
       </div>
       <div class="actions row">
         <div>
-          <%= f.submit '新規登録', class: 'btn btn-success' %>
+          <%= f.submit '更新', class: 'btn btn-success' %>
         </div>
       </div>
     <% end %>

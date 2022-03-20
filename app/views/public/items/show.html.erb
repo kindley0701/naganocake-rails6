@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <%= render 'genre_search', genres: @genres %>
+    <div class="col-3">
+      <%= image_tag @item.get_image(200, 200) %>
+    </div>
+    <div class="col-6">
+      <h3><%= @item.name %></h3>
+      <p><%= @item.caption %></p>
+      <div class="price">
+        <h4>￥<%= @item.price %></h4>
+        <p>(税込)</p>
+      </div>
+      <% if customer_signed_in? %>
+        <div class="select">
+          <%= form_with model: [@customer, @cart_item] do |f| %>
+            <%= f.select :amount, *[1..99] %>
+            <%= f.hidden_field :item_id, value: @item.id %>
+            <%= f.submit 'カートに追加', class: 'btn btn-success' %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
