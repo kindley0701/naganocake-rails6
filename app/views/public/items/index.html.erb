@@ -21,6 +21,9 @@
             <div class="field">
               <p>￥</p>
               <div><%= item.price %></div>
+              <% if item.is_active == false %>
+                <p class="text-danger">　販売停止中</p>
+              <% end %>
             </div>
           </div>
         <% end %>

@@ -11,15 +11,17 @@
         <h4>￥<%= @item.price %></h4>
         <p>(税込)</p>
       </div>
-      <% if customer_signed_in? %>
-        <div class="select">
+      <div class="select">
+        <% if customer_signed_in? && @item.is_active == true %>
           <%= form_with model: [@customer, @cart_item] do |f| %>
             <%= f.select :amount, *[1..99] %>
             <%= f.hidden_field :item_id, value: @item.id %>
             <%= f.submit 'カートに追加', class: 'btn btn-success' %>
           <% end %>
-        </div>
-      <% end %>
+        <% elsif @item.is_active == false %>
+          <p class="text-danger">販売停止中</p>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
