@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'orders/show'
+  end
+  namespace :public do
+
+  end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
   }
@@ -29,6 +35,9 @@ Rails.application.routes.draw do
   resources :addresses, module: 'public', only: [:index, :create, :edit, :update, :destroy]
 
   resources :items, module: 'public', only: [:index, :show]
+  resources :orders, module: 'public', only: [:new, :index, :show, :create]
+  get 'orders/confirm' => 'public/orders#confirm', as: 'confirm_order'
+  get 'orders/complete' => 'public/orders#complete', as: 'complete_order'
 
   namespace :admin do
     root to: 'homes#top'
