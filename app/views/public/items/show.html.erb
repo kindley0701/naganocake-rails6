@@ -13,7 +13,7 @@
       </div>
       <div class="select">
         <% if customer_signed_in? && @item.is_active == true %>
-          <%= form_with model: [@customer, @cart_item] do |f| %>
+          <%= form_with model: @cart_item do |f| %>
             <%= f.select :amount, *[1..99] %>
             <%= f.hidden_field :item_id, value: @item.id %>
             <%= f.submit 'カートに追加', class: 'btn btn-success' %>

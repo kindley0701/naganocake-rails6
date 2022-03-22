@@ -1,7 +1,6 @@
 class Public::CartItemsController < ApplicationController
   def index
-    @customer = Customer.find(params[:customer_id])
-    @cart_items = @customer.cart_items
+    @cart_items = current_customer.cart_items
     @sum = 0
   end
 
@@ -14,26 +13,26 @@ class Public::CartItemsController < ApplicationController
     end
     @cart_item.customer_id = current_customer.id
     @cart_item.save
-    redirect_to customer_cart_items_path
+    redirect_to cart_items_path
   end
 
   def update
     @cart_item = CartItem.find(params[:id])
     @customer = @cart_item.customer
     @cart_item.update(cart_item_params)
-    redirect_to customer_cart_items_path(@customer.id)
+    redirect_to cart_items_path
   end
 
   def destroy
     cart_item = CartItem.find(params[:id])
     cart_item.delete
-    redirect_to customer_cart_items_path
+    redirect_to cart_items_path
   end
 
   def explode
     cart_items = CartItem.all
     cart_items.destroy_all
-    redirect_to customer_cart_items_path
+    redirect_to cart_items_path
   end
 
   private
