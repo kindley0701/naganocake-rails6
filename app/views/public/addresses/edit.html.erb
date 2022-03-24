@@ -4,7 +4,7 @@
   </div>
   <%= render 'public/shared/error_messages', resource: @address %>
   <div>
-    <%= form_with model: @address, url: customer_address_path do |f| %>
+    <%= form_with model: @address do |f| %>
       <div class="row">
         <p class="col-3">郵便番号(ハイフンなし)</p>
         <div class="col-3"><%= f.text_field :zip %></div>
