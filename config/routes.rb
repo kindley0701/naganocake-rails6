@@ -34,7 +34,6 @@ Rails.application.routes.draw do
 
   resources :addresses, module: 'public', only: [:index, :create, :edit, :update, :destroy]
 
-  resources :items, module: 'public', only: [:index, :show]
   resources :orders, module: 'public', only: [:new, :index, :show, :create]
   get 'orders/confirm' => 'public/orders#confirm', as: 'confirm_order'
   get 'orders/complete' => 'public/orders#complete', as: 'complete_order'
