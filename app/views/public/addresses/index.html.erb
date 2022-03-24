@@ -2,14 +2,9 @@
   <div class="row title">
     <h5 class="col-3 bg-light">配送先登録・一覧</h5>
   </div>
-<<<<<<< HEAD
   <%= render 'public/shared/error_messages', resource: @address %>
   <div>
     <%= form_with model: @address do |f| %>
-=======
-  <div>
-    <%= form_with model: @address, url: customer_addresses_path do |f| %>
->>>>>>> 286e2b4 (made page[public(addresses#index, addresses#edit)])
       <div class="row">
         <p class="col-3">郵便番号(ハイフンなし)</p>
         <div class="col-3"><%= f.text_field :zip %></div>

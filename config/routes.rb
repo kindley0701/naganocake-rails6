@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get 'orders/confirm' => 'public/orders#confirm', as: 'confirm_order'
   get 'orders/complete' => 'public/orders#complete', as: 'complete_order'
 
+
   namespace :admin do
     root to: 'homes#top'
     resources :customers, only: [:index]
