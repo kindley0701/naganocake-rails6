@@ -22,3 +22,4 @@
 3でFont Awesomeを導入
 3でActiveStorageをインストールした．
 3でgemを1つ追加．
+6でenum導入済み

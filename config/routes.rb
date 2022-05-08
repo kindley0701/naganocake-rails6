@@ -34,9 +34,10 @@ Rails.application.routes.draw do
 
   resources :addresses, module: 'public', only: [:index, :create, :edit, :update, :destroy]
 
-  resources :orders, module: 'public', only: [:new, :index, :show, :create]
+  
   get 'orders/confirm' => 'public/orders#confirm', as: 'confirm_order'
   get 'orders/complete' => 'public/orders#complete', as: 'complete_order'
+  resources :orders, module: 'public', only: [:new, :index, :show, :create]
 
 
   namespace :admin do
@@ -44,6 +45,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :orders, only: [:index, :show, :update]
   end
 
 
