@@ -13,8 +13,10 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
-  resources :customers, module: 'public'
-  #public権限下でのresourcesの使い方．URLに/public/を含まない．
+
+  get 'customers' => 'public/customers#show', as: 'customer'
+  get 'customers/edit' => 'public/customers#edit', as: 'edit_customer'
+  patch 'customers' => 'public/customers#update', as: 'update_customer'
 
   namespace :admin do
     root to: 'homes#top'
