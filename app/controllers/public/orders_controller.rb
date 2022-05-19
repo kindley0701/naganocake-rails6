@@ -27,21 +27,24 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    order = Order.new(order_params)
-    address = Address.new(address_params)
-    cart_items = current_customer.cart_items
-    order.save
-    address.save
-    cart_items.each do |cart_item|
-      order_detail = OrderDetail.new
-      order_detail.order_id = order.id
-      order_detail.item_id = cart_item.item_id
-      order_detail.price = cart_item.item.price
-      order_detail.amount = cart_item.amount
-      order_detail.save
+    @order = Order.new(order_params)
+    @address = Address.new(address_params)
+    @cart_items = current_customer.cart_items
+    if @order.save
+      @address.save
+      @cart_items.each do |cart_item|
+        order_detail = OrderDetail.new
+        order_detail.order_id = order.id
+        order_detail.item_id = cart_item.item_id
+        order_detail.price = cart_item.item.price
+        order_detail.amount = cart_item.amount
+        order_detail.save
+      end
+      @cart_items.destroy_all
+      redirect_to complete_order_path
+    else
+      render :confirm
     end
-    cart_items.destroy_all
-    redirect_to complete_order_path
   end
 
   def complete
@@ -57,7 +60,7 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:zip, :address, :name, :postage, :total, :pay_method)
   end
-  
+
   def address_params
     params.require(:order).permit(:zip, :address, :name)
   end
