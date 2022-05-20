@@ -1,9 +1,9 @@
 <div class="container">
-  <div class="row title">
-    <h2 class="col-3 bg-light">新規登録</h2>
+  <div class="title row">
+    <h5 class="col-3 bg-light">会員情報編集</h5>
   </div>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "public/shared/error_messages", resource: resource %>
+  <%= form_with model: @customer do |f| %>
+    <%= render "public/shared/error_messages", resource: @customer %>
     <div class="field row">
       <p class="col-3">名前</p>
       <p class="col-1">(姓)</p>
@@ -28,13 +28,7 @@
       </div>
     </div>
 
-    <div class="field row">
-      <p class="col-3">メールアドレス</p><br />
-      <div class="col-1"></div>
-      <div class="col-3">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-    </div>
+
 
     <div class="field row">
       <p class="col-3">郵便番号(ハイフンなし)</p>
@@ -61,35 +55,20 @@
     </div>
 
     <div class="field row">
-      <div class="pass col-3">
-        <p>
-          パスワード
-          <% if @minimum_password_length %>
-          (<%= @minimum_password_length %>文字以上)
-          <% end %>
-        </p>
-      </div>
+      <p class="col-3">メールアドレス</p><br />
       <div class="col-1"></div>
       <div class="col-3">
-        <%= f.password_field :password, autocomplete: "new-password" %>
-      </div>
-    </div>
-
-    <div class="field row">
-      <p class="col-3">パスワード(確認用)</p><br />
-      <div class="col-1"></div>
-      <div class=col-3>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
     </div>
 
     <div class="actions row">
-      <div>
-        <%= f.submit "新規登録", class: "btn btn-success" %>
+      <div class="col-4">
+        <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+      </div>
+      <div class="col-3">
+        <%= link_to "退会する", confirm_customer_path(@customer.id), class: "btn btn-danger" %>
       </div>
     </div>
   <% end %>
-
-  <%= render "public/shared/links" %>
-
 </div>

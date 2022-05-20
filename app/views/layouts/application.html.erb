@@ -40,7 +40,7 @@
             <%= link_to "商品一覧", '/', class: "btn btn-info" %><!--リンク先未実装-->
           </div>
           <div class="header-link">
-            <%= link_to "会員一覧", '/', class: "btn btn-info" %><!--リンク先未実装-->
+            <%= link_to "会員一覧", admin_customers_path, class: "btn btn-info" %><!--リンク先未実装-->
           </div>
           <div class="header-link">
             <%= link_to "注文履歴一覧", '/', class: "btn btn-info" %><!--リンク先未実装-->
@@ -70,6 +70,6 @@
       <% end %>
     </header>
     <%= yield %>
-    <footer></footer>
+    <footer class="bg-light"></footer>
   </body>
 </html>

@@ -17,9 +17,12 @@ Rails.application.routes.draw do
   get 'customers' => 'public/customers#show', as: 'customer'
   get 'customers/edit' => 'public/customers#edit', as: 'edit_customer'
   patch 'customers' => 'public/customers#update', as: 'update_customer'
+  get 'customers/:id/confirm' => 'public/customers#confirm', as: 'confirm_customer'
+  patch 'customers/:id/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe_customer'
 
   namespace :admin do
     root to: 'homes#top'
+    resources :customers, only: [:index]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
