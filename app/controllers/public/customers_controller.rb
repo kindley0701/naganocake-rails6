@@ -1,27 +1,27 @@
 class Public::CustomersController < ApplicationController
   def show
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to customer_path(@customer.id)
+      redirect_to customer_path
     else
       render :edit
     end
   end
 
   def confirm
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def unsubscribe
-    customer = Customer.find(params[:id])
+    customer = current_customer
     customer.update(is_deleted: true)
     reset_session
     redirect_to root_path

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
   }
+  get 'customers/edit' => 'public/customers#edit', as: 'edit_customer'
+  patch 'customers' => 'public/customers#update', as: 'update_customer'
+  #deviseより上にしないとroutingバグる
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: 'public/registrations',
     sessions: 'public/sessions'
@@ -14,11 +17,10 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
 
+  #customers_controller(edit,updateはdeviseの上)
   get 'customers' => 'public/customers#show', as: 'customer'
-  get 'customers/edit' => 'public/customers#edit', as: 'edit_customer'
-  patch 'customers' => 'public/customers#update', as: 'update_customer'
-  get 'customers/:id/confirm' => 'public/customers#confirm', as: 'confirm_customer'
-  patch 'customers/:id/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe_customer'
+  get 'customers/confirm' => 'public/customers#confirm', as: 'confirm_customer'
+  patch 'customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe_customer'
 
   namespace :admin do
     root to: 'homes#top'
