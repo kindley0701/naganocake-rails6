@@ -19,3 +19,4 @@
 
 1でwebpackerをインストールした．
 1でbootstrapとfontawesomeインストール済み
+3でFont Awesomeを導入

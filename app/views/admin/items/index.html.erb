@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row title">
     <h5 class="col-3 bg-light">商品一覧</h5>
-    <div class="col-3">
-      <%= link_to '商品登録ページへ', new_admin_item_path, class: 'btn btn-success' %>
+    <div class="col-8"></div>
+    <div class="col-1">
+      <%= link_to new_admin_item_path do %>
+        <i class="fas fa-plus-circle fa-2x plus"></i>
+      <% end %>
     </div>
   </div>
   <table class="table">
