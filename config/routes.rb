@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   patch 'customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe_customer'
 
   resources :items, module: 'public', only: [:index]
+  #URLにpublicを含まないresourcesの書き方，
 
   namespace :admin do
     root to: 'homes#top'
