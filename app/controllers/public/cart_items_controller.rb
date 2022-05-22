@@ -29,7 +29,7 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
-  def explode
+  def destroy_all
     cart_items = CartItem.all
     cart_items.destroy_all
     redirect_to cart_items_path

@@ -4,13 +4,10 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :cart_items, dependent: :destroy
 
-<<<<<<< HEAD
   validates :name, presence: true, uniqueness: true
   validates :caption, presence: true
   validates :unit_price, presence: true
 
-=======
->>>>>>> d8285dd (made page[public(items#index), admin(genres#index, genres#edit, items#index, items#new, items#show)])
   def price
     (unit_price * 1.08).to_i
   end
