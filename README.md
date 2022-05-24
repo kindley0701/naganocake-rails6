@@ -19,7 +19,6 @@
 
 1でwebpackerをインストールした．
 1でbootstrapとfontawesomeインストール済み
-<<<<<<< HEAD
 3でFont Awesomeを導入
 3でActiveStorageをインストールした．
 3でgemを1つ追加．
