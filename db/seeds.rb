@@ -13,4 +13,4 @@ Admin.create!(
 
 Genre.create(name: 'アソート')
 
-Item.create(genre_id: 6, name: 'スイーツセット(4人前)', caption: '4人前', unit_price: '5000')
+Item.create(genre_id: 1, name: 'スイーツセット(4人前)', caption: '4人前', unit_price: '5000')
