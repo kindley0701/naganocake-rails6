@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :move_to_order, only: [:new, :confirm]
+
   def new
     @order = Order.new
   end
@@ -65,6 +67,11 @@ class Public::OrdersController < ApplicationController
   private
   def order_params
     params.require(:order).permit(:zip, :address, :name, :postage, :total, :pay_method)
+  end
+
+  def move_to_order
+    @cart_items = current_customer.cart_items
+    redirect_to items_path unless @cart_items.exists?
   end
 
 end
