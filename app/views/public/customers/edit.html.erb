@@ -2,11 +2,7 @@
   <div class="title row">
     <h5 class="col-3 bg-light">会員情報編集</h5>
   </div>
-<<<<<<< HEAD
   <%= form_with model: @customer, url: update_customer_path, method: :patch do |f| %>
-=======
-  <%= form_with model: @customer do |f| %>
->>>>>>> 9c8d00f (made page[public(customers#show, customers#edit, customers#confirm), admin(customers#index)])
     <%= render "public/shared/error_messages", resource: @customer %>
     <div class="field row">
       <p class="col-3">名前</p>

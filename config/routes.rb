@@ -34,18 +34,18 @@ Rails.application.routes.draw do
 
   resources :addresses, module: 'public', only: [:index, :create, :edit, :update, :destroy]
 
-  
-  get 'orders/confirm' => 'public/orders#confirm', as: 'confirm_order'
+
+  post 'orders/confirm' => 'public/orders#confirm', as: 'confirm_order'
   get 'orders/complete' => 'public/orders#complete', as: 'complete_order'
   resources :orders, module: 'public', only: [:new, :index, :show, :create]
-
 
   namespace :admin do
     root to: 'homes#top'
     resources :customers, only: [:index]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
-    resources :orders, only: [:index, :show, :update]
+    resources :orders, only: [:show, :update]
+    resources :order_details, only: [:update]
   end
 
 

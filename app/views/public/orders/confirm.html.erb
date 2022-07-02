@@ -2,6 +2,7 @@
   <div class="row title">
     <h5 class="col-3 bg-light">注文情報確認</h5>
   </div>
+  <%= render 'public/shared/error_messages', resource: @order %>
   <div class="row">
     <div class="col-8">
       <table class="table table-bordered">
@@ -60,12 +61,12 @@
     </div>
   </div>
   <%= form_with model: @order do |f| %>
-    <%= f.hidden_field :zip %>
-    <%= f.hidden_field :address %>
-    <%= f.hidden_field :name %>
-    <%= f.hidden_field :postage %>
-    <%= f.hidden_field :total %>
-    <%= f.hidden_field :pay_method %>
+    <%= f.hidden_field :zip, :value => @order.zip %>
+    <%= f.hidden_field :address, :value => @order.address %>
+    <%= f.hidden_field :name, :value => @order.name %>
+    <%= f.hidden_field :total, :value => @order.total %>
+    <%= f.hidden_field :pay_method, :value => @order.pay_method %>
+    <!--f.hidden_field :保存先カラム名, :value => 代入する値-->
     <div class="row actions">
       <%= f.submit "注文を確定する", class: 'btn btn-success', "data-confirm" => "Are you sure？" %>
     </div>

@@ -7,15 +7,12 @@ class Order < ApplicationRecord
   validates :address, presence: true
   validates :name, presence: true
   validates :pay_method, presence: true
+  validates :status, presence: true
 
   def full_address
     "〒" + zip + " " + address + " " + name
   end
-  
-  def total_amounts
-    
-  end
-  
+
   enum status: { waiting: 0, confirm: 1, creating: 2, preparing: 3, shipped: 4}
 
   enum pay_method: { credit_card: 0, transfer: 1 }

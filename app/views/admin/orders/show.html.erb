@@ -1,2 +1,81 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container">
+  <div class="row title">
+    <p class="col-3 bg-light">注文履歴詳細</p>
+  </div>
+  <%= render "public/shared/error_messages", resource: @order %>
+  <div class="row">
+    <h6 class="col-2">購入者</h6>
+    <div class="col-4"><%= @order.customer.last_name %> <%= @order.customer.first_name %></div>
+  </div>
+  <div class="row">
+    <h6 class="col-2">注文日</h6>
+    <div class="col-4"><%= @order.created_at.strftime('%Y/%m/%d') %></div>
+  </div>
+  <div class="row">
+    <h6 class="col-2">配送先</h6>
+    <div class="col-4"><%= @order.zip %> <%= @order.address %><br><%=@order.name %></div>
+  </div>
+  <div class="row">
+    <h6 class="col-2">支払方法</h6>
+    <div class="col-4"><%= @order.pay_method_i18n %></div>
+  </div>
+  <div class="row">
+    <h6 class="col-2">注文ステータス</h6>
+    <div class="col-4">
+      <%= form_with model: @order, url: admin_order_path do |f| %>
+        <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]}, include_blank: "選択して下さい" %>
+        <!--f.select :保存先カラム名, enumで日本語表示するモデル.カラム名の複数形.keys.map {|k| [I18n.t("enums.モデル.カラム.#{k}"), k]}, include_blank: "ブランク時に表示する内容" -->
+        <%= f.submit '更新', class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-bordered col-8">
+      <thead class="table-light">
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>製作ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.price %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.subtotal %></td>
+            <% @sum += order_detail.subtotal %>
+            <td>
+              <%= form_with model: order_detail, url: admin_order_detail_path, method: :patch do |f| %>
+                <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]}, include_blank: "選択して下さい" %>
+                <!--f.select :保存先カラム名, enumで日本語表示するモデル.カラム名の複数形.keys.map {|k| [I18n.t("enums.モデル小文字.カラム.#{k}"), k]}, include_blank: "ブランク時に表示する内容" -->
+                <%= f.submit '更新', class: 'btn btn-success' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="col-4">
+      <div class="container">
+        <div class="row">
+          <h6 class="col-6">商品合計</h6>
+          <div class="col-6 text-right"><%= @sum %>円</div>
+        </div>
+        <div class="row">
+          <h6 class="col-6">送料</h6>
+          <div class="col-6 text-right"><%= @order.postage %>円</div>
+        </div>
+        <div class="row">
+          <h6 class="col-6">請求金額合計</h6>
+          <div class="col-6 text-right"><%= @order.total %>円</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
