@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    get 'search' => 'items#search', as: 'search'
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
   end

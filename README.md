@@ -23,3 +23,4 @@
 3でActiveStorageをインストールした．
 3でgemを1つ追加．
 6でenum導入済み
+7でRunsackを導入済み
