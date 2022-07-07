@@ -18,6 +18,7 @@
         <div class="logo">
           <%= link_to "LOGO", '/' %>
         </div>
+        <p>ようこそ，<%= current_customer.last_name %>さん！</p>
         <div class="header-links">
           <div class="header-link">
             <%= link_to "マイページ", customer_path, class: "btn btn-info" %>
