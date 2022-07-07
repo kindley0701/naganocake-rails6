@@ -4,7 +4,8 @@
   </div>
   <div class="border border-dark border-top-0">
     <% genres.each do |genre| %>
-      <div class="genre"><%= genre.name %></div>
+      <div class="genre"><%= link_to genre.name, items_path(genre_id: genre.id) %></div>
+      <!--名前付きパスのあとの()でurlパラメータを持たせてアクション起動-->
     <% end %>
   </div>
 </div>
