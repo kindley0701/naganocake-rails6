@@ -5,7 +5,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
+    @cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
     if @cart_item
       @cart_item.amount += CartItem.new(cart_item_params).amount
     else
@@ -30,7 +30,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
-    cart_items = CartItem.all
+    cart_items = current_customer.cart_items.all
     cart_items.destroy_all
     redirect_to cart_items_path
   end
