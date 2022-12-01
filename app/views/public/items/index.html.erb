@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
-    <%= render 'genre_search', genres: @genres %>
-    <div class="col-9 title">
+    <div class="col-3">
+      <%= render 'genre_search', genres: @genres %>
+    </div>
+    <div class="col-8 offset-1">
       <div>
         <h5 class="bg-light"><%= @genre %>一覧</h5>
         <p>（全<%= @items.count %>件）</p>
@@ -13,8 +15,8 @@
               <div class="image">
                 <%= image_tag item.get_image(150,150) %>
               </div>
-              <div class="field">
-                <p>商品名　　</p>
+              <div>
+                <p>商品名</p>
                 <div><%= item.name %></div>
               </div>
             <% end %>
@@ -28,7 +30,6 @@
           </div>
         <% end %>
       </div>
-
     </div>
   </div>
 </div>

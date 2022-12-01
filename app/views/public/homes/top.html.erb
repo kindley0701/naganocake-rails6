@@ -1,2 +1,40 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'public/items/genre_search', genres: @genres %>
+    </div>
+    <div class="col-8 offset-1">
+      <div class="home-image">
+        <%= image_tag 'cake.png',size: '400x400' %>
+      </div>
+      <div>
+        <h5 class="bg-light">新着商品</h5>
+      </div>
+      <div class="items">
+        <% @items.each do |item| %>
+          <div class="item">
+            <%= link_to item_path(item.id), class: 'text-dark' do %>
+              <div class="image">
+                <%= image_tag item.get_image(150,150) %>
+              </div>
+              <div>
+                <p>商品名</p>
+                <div><%= item.name %></div>
+              </div>
+            <% end %>
+            <div class="field">
+              <p>￥</p>
+              <div><%= item.price %></div>
+              <% if item.is_active == false %>
+                <p class="text-danger">　販売停止中</p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to 'すべての商品を見る', items_path, class: 'btn btn-success' %>
+      </div>
+    </div>
+  </div>
+</div>
